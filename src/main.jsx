@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 import ErrorPage from './routes/ErrorPage.jsx';
 import Contact, {loader as contactLoader} from './routes/Contact.jsx';
-import EditContact from './routes/EditContact.jsx';
+import EditContact, { action as editAction} from './routes/EditContact.jsx';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +28,7 @@ const router = createBrowserRouter([
         path: "contacts/:contactId/edit",
         element: <EditContact />,
         loader: contactLoader,
+        action: editAction,
       }
     ],
   },

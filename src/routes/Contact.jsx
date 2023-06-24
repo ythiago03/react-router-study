@@ -34,9 +34,9 @@ export default function Contact() {
         {contact.twitter && (
           <p>
             <a
-            rel="noreferrer"
+              rel="noreferrer"
               target="_blank"
-              href={`https://twitter.com/${contact.twitter}`}
+              href={`https://www.instagram.com/${contact.twitter}`}
             >
               {contact.twitter}
             </a>
