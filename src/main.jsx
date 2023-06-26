@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App, {loader as rootLoader, action as rootAction} from './App.jsx';
 import './index.css';
+import Index from "./routes/index";
 
 import {
   createBrowserRouter,
@@ -9,7 +10,8 @@ import {
 } from 'react-router-dom';
 import ErrorPage from './routes/ErrorPage.jsx';
 import Contact, {loader as contactLoader} from './routes/Contact.jsx';
-import EditContact, { action as editAction} from './routes/EditContact.jsx';
+import EditContact, { action as editAction } from './routes/EditContact.jsx';
+import {action as destroyAction} from './routes/Destroy.jsx';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +20,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     loader: rootLoader,
     action: rootAction,
-    children: [
+    children: [ 
+      { index: true, element: <Index /> },
       {
         path: "contacts/:contactId",
         element: <Contact />,
@@ -29,6 +32,11 @@ const router = createBrowserRouter([
         element: <EditContact />,
         loader: contactLoader,
         action: editAction,
+      },
+      {
+        path: "contacts/:contactId/destroy",
+        errorElement: <div>Oops! There was an error.</div>,
+        action: destroyAction,
       }
     ],
   },
